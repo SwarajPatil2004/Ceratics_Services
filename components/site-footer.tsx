@@ -162,7 +162,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/#about"
+                  href="/about"
                   className="transition-colors hover:text-foreground"
                 >
                   About
