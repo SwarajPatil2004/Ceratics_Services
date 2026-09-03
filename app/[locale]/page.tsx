@@ -9,7 +9,7 @@ export default function HomePage() {
   const t = useTranslations("Index");
 
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-24 sm:py-32 text-foreground">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-24 text-foreground sm:py-32">
       {/* Subtle radial background glow */}
       <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-gradient-radial-glow opacity-75 blur-3xl" />
 
@@ -61,11 +61,7 @@ export default function HomePage() {
             Book a Call
           </Button>
           <Link href="/style-guide">
-            <Button
-              variant="outline"
-              size="lg"
-              className="gap-2 font-medium"
-            >
+            <Button variant="outline" size="lg" className="gap-2 font-medium">
               <Palette className="h-4 w-4 text-brand-teal-500" />
               {t("viewStyleGuide")}
               <ArrowRight className="h-4 w-4" />

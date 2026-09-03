@@ -92,14 +92,14 @@ export function SiteHeader() {
             <span className="font-heading text-lg font-bold tracking-tight text-foreground">
               Ceratics
             </span>
-            <span className="hidden text-[10px] font-medium text-muted-foreground sm:block -mt-1">
+            <span className="-mt-1 hidden text-[10px] font-medium text-muted-foreground sm:block">
               AI Growth Partner
             </span>
           </div>
         </Link>
 
         {/* Center: Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+        <nav className="hidden items-center gap-1 md:flex lg:gap-2">
           {navLinks.map((link) => {
             const active = isLinkActive(link.href);
             return (
@@ -107,9 +107,9 @@ export function SiteHeader() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:text-foreground hover:bg-muted/60",
+                  "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted/60 hover:text-foreground",
                   active
-                    ? "text-foreground bg-muted/80 font-semibold"
+                    ? "bg-muted/80 font-semibold text-foreground"
                     : "text-muted-foreground"
                 )}
               >
@@ -120,7 +120,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Right: Desktop Actions */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
           <Button
             variant="gradient"
@@ -141,7 +141,7 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button
             type="button"
@@ -218,7 +218,7 @@ export function SiteHeader() {
                       className={cn(
                         "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                         active
-                          ? "bg-muted text-foreground font-semibold"
+                          ? "bg-muted font-semibold text-foreground"
                           : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
                       )}
                     >
@@ -234,7 +234,7 @@ export function SiteHeader() {
             <div className="space-y-4 border-t border-border/80 pt-6">
               <Button
                 variant="gradient"
-                className="w-full gap-2 font-semibold shadow-md py-5"
+                className="w-full gap-2 py-5 font-semibold shadow-md"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   const contactEl = document.getElementById("contact");
