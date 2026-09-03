@@ -64,7 +64,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   const mdxComponents = {
     h1: (props: any) => (
-      <h1
+      <h2
         className="mb-4 mt-8 font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
         {...props}
       />

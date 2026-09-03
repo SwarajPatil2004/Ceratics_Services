@@ -79,12 +79,13 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-2xl transition-all sm:p-8"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="booking-modal-title"
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="absolute right-4 top-4 rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-brand-teal-500"
           aria-label="Close dialog"
         >
           <X className="h-5 w-5" />
@@ -95,7 +96,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-teal-50 text-brand-teal-600 dark:bg-brand-teal-950/80 dark:text-brand-teal-300">
               <CheckCircle2 className="h-8 w-8" />
             </div>
-            <h3 className="font-heading text-2xl font-bold text-foreground">
+            <h3
+              id="booking-modal-title"
+              className="font-heading text-2xl font-bold text-foreground"
+            >
               {t("successTitle")}
             </h3>
             <p className="mx-auto max-w-sm text-sm text-muted-foreground">
@@ -117,7 +121,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <Badge variant="teal" className="mb-2 gap-1.5 py-1">
                 <Sparkles className="h-3 w-3" /> {t("badge")}
               </Badge>
-              <h2 className="font-heading text-2xl font-bold text-foreground">
+              <h2
+                id="booking-modal-title"
+                className="font-heading text-2xl font-bold text-foreground"
+              >
                 {t("title")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -128,10 +135,14 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-foreground">
+                  <label
+                    htmlFor="booking-name"
+                    className="mb-1 block text-xs font-semibold text-foreground"
+                  >
                     {t("nameLabel")}
                   </label>
                   <input
+                    id="booking-name"
                     type="text"
                     required
                     placeholder={t("namePlaceholder")}
@@ -143,10 +154,14 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-foreground">
+                  <label
+                    htmlFor="booking-business"
+                    className="mb-1 block text-xs font-semibold text-foreground"
+                  >
                     {t("businessLabel")}
                   </label>
                   <input
+                    id="booking-business"
                     type="text"
                     required
                     placeholder={t("businessPlaceholder")}
@@ -161,10 +176,14 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-foreground">
+                  <label
+                    htmlFor="booking-email"
+                    className="mb-1 block text-xs font-semibold text-foreground"
+                  >
                     {t("emailLabel")}
                   </label>
                   <input
+                    id="booking-email"
                     type="email"
                     required
                     placeholder={t("emailPlaceholder")}
@@ -176,10 +195,14 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-semibold text-foreground">
+                  <label
+                    htmlFor="booking-phone"
+                    className="mb-1 block text-xs font-semibold text-foreground"
+                  >
                     {t("phoneLabel")}
                   </label>
                   <input
+                    id="booking-phone"
                     type="tel"
                     placeholder={t("phonePlaceholder")}
                     value={formData.phone}
@@ -192,10 +215,14 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-foreground">
+                <label
+                  htmlFor="booking-goal"
+                  className="mb-1 block text-xs font-semibold text-foreground"
+                >
                   {t("priorityLabel")}
                 </label>
                 <select
+                  id="booking-goal"
                   value={formData.primaryGoal}
                   onChange={(e) =>
                     setFormData({ ...formData, primaryGoal: e.target.value })

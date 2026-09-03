@@ -118,11 +118,15 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+              <label
+                htmlFor="contact-name"
+                className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground"
+              >
                 <User className="h-3 w-3 text-brand-teal-500" />{" "}
                 {t("nameLabel")}
               </label>
               <input
+                id="contact-name"
                 type="text"
                 required
                 placeholder={t("namePlaceholder")}
@@ -135,11 +139,15 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+              <label
+                htmlFor="contact-business"
+                className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground"
+              >
                 <Building className="h-3 w-3 text-brand-teal-500" />{" "}
                 {t("businessLabel")}
               </label>
               <input
+                id="contact-business"
                 type="text"
                 required
                 placeholder={t("businessPlaceholder")}
@@ -154,11 +162,15 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+              <label
+                htmlFor="contact-email"
+                className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground"
+              >
                 <Mail className="h-3 w-3 text-brand-teal-500" />{" "}
                 {t("emailLabel")}
               </label>
               <input
+                id="contact-email"
                 type="email"
                 required
                 placeholder={t("emailPlaceholder")}
@@ -171,11 +183,15 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+              <label
+                htmlFor="contact-phone"
+                className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground"
+              >
                 <Phone className="h-3 w-3 text-brand-teal-500" />{" "}
                 {t("phoneLabel")}
               </label>
               <input
+                id="contact-phone"
                 type="tel"
                 placeholder={t("phonePlaceholder")}
                 value={formData.phone}
@@ -188,11 +204,15 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+            <label
+              htmlFor="contact-message"
+              className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground"
+            >
               <MessageSquare className="h-3 w-3 text-brand-teal-500" />{" "}
               {t("messageLabel")}
             </label>
             <textarea
+              id="contact-message"
               required
               rows={4}
               placeholder={t("messagePlaceholder")}

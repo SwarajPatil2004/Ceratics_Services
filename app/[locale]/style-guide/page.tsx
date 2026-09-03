@@ -400,9 +400,9 @@ export default function StyleGuidePage() {
                 <p className="mb-1 text-xs text-muted-foreground">
                   Heading 1 (36px)
                 </p>
-                <h1 className="font-heading text-3xl font-bold tracking-tight">
+                <p className="font-heading text-3xl font-bold tracking-tight">
                   Scale Your Business with AI
-                </h1>
+                </p>
               </div>
 
               <div className="border-b border-border/50 pb-3">
