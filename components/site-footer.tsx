@@ -170,7 +170,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/#blog"
+                  href="/blog"
                   className="transition-colors hover:text-foreground"
                 >
                   Blog

@@ -25,7 +25,7 @@ const navLinks = [
   { name: "Home", href: "/", icon: Home },
   { name: "Services", href: "/services", icon: Briefcase },
   { name: "About", href: "/about", icon: Users },
-  { name: "Blog", href: "/#blog", icon: BookOpen },
+  { name: "Blog", href: "/blog", icon: BookOpen },
   { name: "Contact", href: "/#contact", icon: Mail },
   { name: "Style Guide", href: "/style-guide", icon: Palette },
 ];
