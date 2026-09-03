@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
 import "@/app/globals.css";
 
 const sans = Inter({
@@ -22,11 +23,68 @@ const heading = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Ceratics — AI-Powered Growth Partner",
+  metadataBase: new URL("https://ceratics.com"),
+  title: {
+    default: "Ceratics | AI Websites & Lead Automations for Small Business",
+    template: "%s | Ceratics",
+  },
   description:
-    "Modern, minimal, trustworthy AI-powered growth partner for small businesses.",
+    "Ceratics helps small and local businesses win more customers with high-converting website design, 24/7 AI receptionists, missed-call text-back, and automated lead follow-up. 100% done-for-you in 14 days.",
+  keywords: [
+    "AI website builder for small business",
+    "AI receptionist small business",
+    "website design for local business",
+    "missed call text back service",
+    "AI marketing agency for small business",
+    "contractor website design",
+    "automated lead follow up",
+    "small business CRM automation",
+    "local business answering service",
+    "Google review automation for contractors",
+  ],
+  authors: [{ name: "Ceratics Team", url: "https://ceratics.com" }],
+  creator: "Ceratics",
+  publisher: "Ceratics",
   icons: {
     icon: "/ceratics-logo.png",
+    shortcut: "/ceratics-logo.png",
+    apple: "/ceratics-logo.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ceratics.com",
+    siteName: "Ceratics",
+    title: "Ceratics | AI Websites & Lead Automations for Small Business",
+    description:
+      "Modern websites, 24/7 AI receptionists, missed-call text-back, and automated quote follow-ups. Built and managed for small businesses in 14 days.",
+    images: [
+      {
+        url: "/ceratics-logo.png",
+        width: 800,
+        height: 800,
+        alt: "Ceratics Logo — AI-Powered Growth Partner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ceratics | AI Websites & Lead Automations for Small Business",
+    description:
+      "Modern websites, 24/7 AI receptionists, missed-call text-back, and automated quote follow-ups. Built and managed for small businesses in 14 days.",
+    images: ["/ceratics-logo.png"],
+    creator: "@ceratics",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -63,6 +121,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
+            <JsonLd />
             <div className="relative flex min-h-screen flex-col bg-background text-foreground">
               <SiteHeader />
               <main className="flex-1">{children}</main>

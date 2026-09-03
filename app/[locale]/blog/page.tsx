@@ -20,15 +20,30 @@ import {
 import { getAllPosts, getAllTags } from "@/lib/blog";
 
 export const metadata = {
-  title: "Blog & Growth Guides — Websites & AI for Small Business | Ceratics",
+  title: "Growth Playbooks & Guides — Websites & AI for Small Business",
   description:
     "Actionable strategies, conversion guides, and AI playbooks written specifically for local and small business owners looking to capture more leads and scale operations.",
+  keywords: [
+    "small business blog",
+    "AI receptionist guide",
+    "website conversion rate optimization",
+    "missed call text back service",
+    "contractor marketing playbooks",
+  ],
   openGraph: {
-    title: "Blog & Growth Guides | Ceratics",
+    title: "Growth Playbooks & Guides | Ceratics",
     description:
       "Actionable strategies, conversion guides, and AI playbooks for local business owners.",
     url: "https://ceratics.com/blog",
     type: "website",
+    images: [
+      {
+        url: "/ceratics-logo.png",
+        width: 800,
+        height: 800,
+        alt: "Ceratics Blog & Playbooks",
+      },
+    ],
   },
 };
 

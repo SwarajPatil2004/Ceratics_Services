@@ -14,15 +14,30 @@ import { CalEmbed } from "@/components/cal-embed";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata = {
-  title: "Book a Call & Contact | Ceratics",
+  title: "Book a Strategy Call & Contact Our Team",
   description:
-    "Schedule a 15-minute discovery call directly on our calendar or send us a message. Learn how modern websites and practical AI automations can capture more leads for your business.",
+    "Schedule a 15-minute discovery call directly on our calendar or drop us a note. Discover how custom web design and practical AI automations can capture more leads for your business.",
+  keywords: [
+    "book strategy call small business",
+    "contact AI agency",
+    "small business website consultation",
+    "missed call text back demo",
+    "AI receptionist consultation",
+  ],
   openGraph: {
     title: "Book a Strategy Call | Ceratics",
     description:
       "Schedule a 15-minute discovery call or send us a message. We help local businesses capture more leads with modern websites and AI.",
     url: "https://ceratics.com/contact",
     type: "website",
+    images: [
+      {
+        url: "/ceratics-logo.png",
+        width: 800,
+        height: 800,
+        alt: "Contact Ceratics",
+      },
+    ],
   },
 };
 
