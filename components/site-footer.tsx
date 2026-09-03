@@ -178,7 +178,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="transition-colors hover:text-foreground"
                 >
                   Contact
