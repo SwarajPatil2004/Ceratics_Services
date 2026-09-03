@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ interface BookingModalProps {
 }
 
 export function BookingModal({ isOpen, onClose }: BookingModalProps) {
+  const t = useTranslations("BookingModal");
   const [submitted, setSubmitted] = React.useState(false);
   const [formData, setFormData] = React.useState({
     name: "",
@@ -90,23 +92,18 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <CheckCircle2 className="h-8 w-8" />
             </div>
             <h3 className="font-heading text-2xl font-bold text-foreground">
-              Discovery Call Requested!
+              {t("successTitle")}
             </h3>
             <p className="mx-auto max-w-sm text-sm text-muted-foreground">
-              Thank you,{" "}
-              <strong className="text-foreground">
-                {formData.name || "friend"}
-              </strong>
-              . We received your request for{" "}
-              <strong className="text-foreground">
-                {formData.businessName || "your business"}
-              </strong>
-              . Our team will reach out via {formData.email || "email"} within 4
-              business hours to lock in your 15-minute slot.
+              {t("successDesc", {
+                name: formData.name || "friend",
+                businessName: formData.businessName || "your business",
+                email: formData.email || "email",
+              })}
             </p>
             <div className="pt-4">
               <Button variant="outline" onClick={onClose} className="w-full">
-                Back to Ceratics
+                {t("backBtn")}
               </Button>
             </div>
           </div>
@@ -114,15 +111,13 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
           <div className="space-y-6">
             <div>
               <Badge variant="teal" className="mb-2 gap-1.5 py-1">
-                <Sparkles className="h-3 w-3" /> Free 15-Minute Strategy Call
+                <Sparkles className="h-3 w-3" /> {t("badge")}
               </Badge>
               <h2 className="font-heading text-2xl font-bold text-foreground">
-                Let&apos;s Build Your Growth Engine
+                {t("title")}
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                No high-pressure sales pitch. Just a direct look at how modern
-                web design and practical AI automations can capture more leads
-                for your business.
+                {t("subtitle")}
               </p>
             </div>
 
@@ -130,12 +125,12 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-foreground">
-                    Your Name *
+                    {t("nameLabel")}
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Alex Morgan"
+                    placeholder={t("namePlaceholder")}
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -145,12 +140,12 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-foreground">
-                    Business Name *
+                    {t("businessLabel")}
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Apex Plumbing & HVAC"
+                    placeholder={t("businessPlaceholder")}
                     value={formData.businessName}
                     onChange={(e) =>
                       setFormData({ ...formData, businessName: e.target.value })
@@ -163,12 +158,12 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-foreground">
-                    Work Email *
+                    {t("emailLabel")}
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="alex@business.com"
+                    placeholder={t("emailPlaceholder")}
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -178,11 +173,11 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-foreground">
-                    Phone Number
+                    {t("phoneLabel")}
                   </label>
                   <input
                     type="tel"
-                    placeholder="(555) 234-5678"
+                    placeholder={t("phonePlaceholder")}
                     value={formData.phone}
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
@@ -194,7 +189,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
               <div>
                 <label className="mb-1 block text-xs font-semibold text-foreground">
-                  What is your primary growth priority?
+                  {t("priorityLabel")}
                 </label>
                 <select
                   value={formData.primaryGoal}
@@ -204,19 +199,19 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:border-brand-teal-500 focus:outline-none focus:ring-1 focus:ring-brand-teal-500"
                 >
                   <option value="missed-calls">
-                    Stop losing callers (Missed-Call Text-Back)
+                    {t("priorityOptions.missedCalls")}
                   </option>
                   <option value="new-website">
-                    High-converting website redesign for local search
+                    {t("priorityOptions.newWebsite")}
                   </option>
                   <option value="ai-assistant">
-                    24/7 AI chat & voice receptionist
+                    {t("priorityOptions.aiAssistant")}
                   </option>
                   <option value="reviews-crm">
-                    Automate Google reviews & customer follow-ups
+                    {t("priorityOptions.reviewsCrm")}
                   </option>
                   <option value="full-revamp">
-                    Full-stack growth overhaul (Website + AI)
+                    {t("priorityOptions.fullRevamp")}
                   </option>
                 </select>
               </div>
@@ -229,19 +224,20 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   className="w-full gap-2 py-5 font-semibold shadow-md"
                 >
                   <Calendar className="h-4 w-4" />
-                  Confirm 15-Min Strategy Call
+                  {t("confirmBtn")}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
 
               <div className="flex items-center justify-center gap-4 pt-1 text-[11px] text-muted-foreground">
                 <span className="flex items-center gap-1">
-                  <Clock className="h-3 w-3 text-brand-teal-500" /> 15 mins
+                  <Clock className="h-3 w-3 text-brand-teal-500" />{" "}
+                  {t("duration")}
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Shield className="h-3 w-3 text-brand-teal-500" /> 100% Free &
-                  No Obligation
+                  <Shield className="h-3 w-3 text-brand-teal-500" />{" "}
+                  {t("guarantee")}
                 </span>
               </div>
             </form>

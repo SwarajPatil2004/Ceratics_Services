@@ -19,20 +19,24 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "Services", href: "/services", icon: Briefcase },
-  { name: "About", href: "/about", icon: Users },
-  { name: "Blog", href: "/blog", icon: BookOpen },
-  { name: "Contact", href: "/contact", icon: Mail },
-  { name: "Style Guide", href: "/style-guide", icon: Palette },
-];
-
 export function SiteHeader() {
+  const tNav = useTranslations("Nav");
+  const tCommon = useTranslations("Common");
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  const navLinks = [
+    { name: tNav("home"), href: "/", icon: Home },
+    { name: tNav("services"), href: "/services", icon: Briefcase },
+    { name: tNav("about"), href: "/about", icon: Users },
+    { name: tNav("blog"), href: "/blog", icon: BookOpen },
+    { name: tNav("contact"), href: "/contact", icon: Mail },
+    { name: tNav("styleGuide"), href: "/style-guide", icon: Palette },
+  ];
 
   // Close mobile menu on route change
   React.useEffect(() => {
@@ -120,7 +124,8 @@ export function SiteHeader() {
         </nav>
 
         {/* Right: Desktop Actions */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2.5 md:flex">
+          <LanguageSwitcher />
           <ThemeToggle />
           <Button
             variant="gradient"
@@ -136,12 +141,13 @@ export function SiteHeader() {
             }}
           >
             <PhoneCall className="h-3.5 w-3.5" />
-            Book a Call
+            {tCommon("bookCall")}
           </Button>
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-1.5 md:hidden">
+          <LanguageSwitcher />
           <ThemeToggle />
           <button
             type="button"
@@ -246,8 +252,13 @@ export function SiteHeader() {
                 }}
               >
                 <PhoneCall className="h-4 w-4" />
-                Book a Call
+                {tCommon("bookCall")}
               </Button>
+
+              <div className="flex items-center justify-between rounded-lg border border-border bg-muted/40 p-3 text-xs">
+                <span className="text-muted-foreground">Language</span>
+                <LanguageSwitcher showLabel />
+              </div>
 
               <div className="flex items-center justify-between rounded-lg border border-border bg-muted/40 p-3 text-xs">
                 <span className="text-muted-foreground">Appearance</span>
@@ -255,7 +266,7 @@ export function SiteHeader() {
               </div>
 
               <p className="text-center text-[11px] text-muted-foreground">
-                AI-Powered Growth Partner for Small Businesses
+                {tCommon("tagline")}
               </p>
             </div>
           </aside>

@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -63,6 +66,8 @@ function YouTubeIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function SiteFooter() {
+  const t = useTranslations("Footer");
+  const tNav = useTranslations("Nav");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -87,14 +92,12 @@ export function SiteFooter() {
             </Link>
 
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              AI-powered growth partner for small businesses. Modern, minimal,
-              and trustworthy automation systems engineered for measurable
-              revenue impact.
+              {t("tagline")}
             </p>
 
             <div className="flex items-center gap-2 pt-1 text-xs text-muted-foreground">
               <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              <span>Systems operational • Accepting new partners</span>
+              <span>{t("status")}</span>
             </div>
 
             {/* Social Links */}
@@ -141,7 +144,7 @@ export function SiteFooter() {
           {/* Navigation Links Column */}
           <div className="space-y-4 md:col-span-2">
             <p className="font-heading text-xs font-semibold uppercase tracking-wider text-foreground">
-              Navigation
+              {t("navigation")}
             </p>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
@@ -149,7 +152,7 @@ export function SiteFooter() {
                   href="/"
                   className="transition-colors hover:text-foreground"
                 >
-                  Home
+                  {tNav("home")}
                 </Link>
               </li>
               <li>
@@ -157,7 +160,7 @@ export function SiteFooter() {
                   href="/services"
                   className="transition-colors hover:text-foreground"
                 >
-                  Services
+                  {tNav("services")}
                 </Link>
               </li>
               <li>
@@ -165,7 +168,7 @@ export function SiteFooter() {
                   href="/about"
                   className="transition-colors hover:text-foreground"
                 >
-                  About
+                  {tNav("about")}
                 </Link>
               </li>
               <li>
@@ -173,7 +176,7 @@ export function SiteFooter() {
                   href="/blog"
                   className="transition-colors hover:text-foreground"
                 >
-                  Blog
+                  {tNav("blog")}
                 </Link>
               </li>
               <li>
@@ -181,7 +184,7 @@ export function SiteFooter() {
                   href="/contact"
                   className="transition-colors hover:text-foreground"
                 >
-                  Contact
+                  {tNav("contact")}
                 </Link>
               </li>
               <li>
@@ -189,7 +192,7 @@ export function SiteFooter() {
                   href="/style-guide"
                   className="inline-flex items-center gap-1 text-brand-teal-600 transition-colors hover:text-brand-teal-700 dark:text-brand-teal-400"
                 >
-                  Style Guide <ArrowUpRight className="h-3 w-3" />
+                  {tNav("styleGuide")} <ArrowUpRight className="h-3 w-3" />
                 </Link>
               </li>
             </ul>
@@ -198,22 +201,32 @@ export function SiteFooter() {
           {/* Solutions Column */}
           <div className="space-y-4 md:col-span-3">
             <p className="font-heading text-xs font-semibold uppercase tracking-wider text-foreground">
-              Solutions
+              {t("solutions")}
             </p>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <span className="transition-colors hover:text-foreground">
-                  Autonomous Lead Triage
+                  Custom Website Architecture
                 </span>
               </li>
               <li>
                 <span className="transition-colors hover:text-foreground">
-                  CRM Workflow Automation
+                  24/7 AI Receptionists
                 </span>
               </li>
               <li>
                 <span className="transition-colors hover:text-foreground">
-                  Custom AI Knowledge Agents
+                  Missed-Call Text-Back
+                </span>
+              </li>
+              <li>
+                <span className="transition-colors hover:text-foreground">
+                  Review & Reputation Engine
+                </span>
+              </li>
+              <li>
+                <span className="transition-colors hover:text-foreground">
+                  Unified Lead Inbox & CRM
                 </span>
               </li>
               <li>
@@ -227,16 +240,16 @@ export function SiteFooter() {
           {/* Contact / Consultation Column */}
           <div className="space-y-4 md:col-span-2">
             <p className="font-heading text-xs font-semibold uppercase tracking-wider text-foreground">
-              Get in Touch
+              {t("consultation")}
             </p>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>Ready to deploy AI in your small business?</p>
+              <p>{t("consultationNote")}</p>
               <a
-                href="mailto:contact@ceratics.com"
+                href="mailto:hello@ceratics.com"
                 className="inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-brand-teal-600 dark:hover:text-brand-teal-400"
               >
                 <Mail className="h-3.5 w-3.5 text-brand-teal-500" />
-                contact@ceratics.com
+                {t("emailUs")}
               </a>
             </div>
           </div>
@@ -244,16 +257,16 @@ export function SiteFooter() {
 
         {/* Bottom Bar with Copyright */}
         <div className="mt-12 flex flex-col items-center justify-between border-t border-border/80 pt-8 text-xs text-muted-foreground sm:flex-row">
-          <p>© {currentYear} Ceratics. All rights reserved.</p>
+          <p>{t("copyright", { year: currentYear })}</p>
           <div className="mt-4 flex gap-6 sm:mt-0">
             <span className="cursor-pointer transition-colors hover:text-foreground">
-              Privacy Policy
+              {t("privacy")}
             </span>
             <span className="cursor-pointer transition-colors hover:text-foreground">
-              Terms of Service
+              {t("terms")}
             </span>
             <span className="cursor-pointer transition-colors hover:text-foreground">
-              Security
+              {t("security")}
             </span>
           </div>
         </div>

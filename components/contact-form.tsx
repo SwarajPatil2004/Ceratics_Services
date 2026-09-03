@@ -16,8 +16,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 export function ContactForm() {
+  const t = useTranslations("ContactForm");
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -76,17 +78,15 @@ export function ContactForm() {
 
   return (
     <div className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
-      <div className="mb-6 space-y-2">
+      <div className="space-y-2">
         <Badge variant="teal" className="gap-1.5 py-1 text-xs">
-          <Mail className="h-3 w-3" /> Direct Inquiries
+          <Mail className="h-3 w-3" /> {t("badge")}
         </Badge>
         <h2 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
-          Send Us a Direct Message
+          {t("title")}
         </h2>
         <p className="text-xs text-muted-foreground sm:text-sm">
-          Prefer typing over a calendar booking? Tell us about your business and
-          what you want to automate. We review and reply within 4 business
-          hours.
+          {t("subtitle")}
         </p>
       </div>
 
@@ -96,14 +96,14 @@ export function ContactForm() {
             <CheckCircle2 className="h-7 w-7" />
           </div>
           <h3 className="font-heading text-xl font-bold text-foreground">
-            Message Dispatched!
+            {t("successTitle")}
           </h3>
           <p className="mx-auto max-w-sm text-sm leading-relaxed text-muted-foreground">
             {feedbackMessage}
           </p>
           <div className="pt-2">
             <Button variant="outline" size="sm" onClick={handleReset}>
-              Send Another Note
+              {t("resetBtn")}
             </Button>
           </div>
         </div>
@@ -118,13 +118,14 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1.5 block flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                <User className="h-3 w-3 text-brand-teal-500" /> Your Name *
+              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <User className="h-3 w-3 text-brand-teal-500" />{" "}
+                {t("nameLabel")}
               </label>
               <input
                 type="text"
                 required
-                placeholder="e.g. Jordan Miller"
+                placeholder={t("namePlaceholder")}
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -134,14 +135,14 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label className="mb-1.5 block flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                <Building className="h-3 w-3 text-brand-teal-500" /> Business
-                Name *
+              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <Building className="h-3 w-3 text-brand-teal-500" />{" "}
+                {t("businessLabel")}
               </label>
               <input
                 type="text"
                 required
-                placeholder="e.g. Miller Roofing & Solar"
+                placeholder={t("businessPlaceholder")}
                 value={formData.businessName}
                 onChange={(e) =>
                   setFormData({ ...formData, businessName: e.target.value })
@@ -153,13 +154,14 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1.5 block flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                <Mail className="h-3 w-3 text-brand-teal-500" /> Work Email *
+              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <Mail className="h-3 w-3 text-brand-teal-500" />{" "}
+                {t("emailLabel")}
               </label>
               <input
                 type="email"
                 required
-                placeholder="jordan@millerroofing.com"
+                placeholder={t("emailPlaceholder")}
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -169,13 +171,13 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label className="mb-1.5 block flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                <Phone className="h-3 w-3 text-brand-teal-500" /> Phone Number
-                (Optional)
+              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <Phone className="h-3 w-3 text-brand-teal-500" />{" "}
+                {t("phoneLabel")}
               </label>
               <input
                 type="tel"
-                placeholder="(555) 345-6789"
+                placeholder={t("phonePlaceholder")}
                 value={formData.phone}
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
@@ -186,14 +188,14 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label className="mb-1.5 block flex items-center gap-1.5 text-xs font-semibold text-foreground">
-              <MessageSquare className="h-3 w-3 text-brand-teal-500" /> How Can
-              We Help? *
+            <label className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-foreground">
+              <MessageSquare className="h-3 w-3 text-brand-teal-500" />{" "}
+              {t("messageLabel")}
             </label>
             <textarea
               required
               rows={4}
-              placeholder="Tell us a little about your business, what services you provide, and whether you're looking for a new website, missed-call text-back, AI answering, or a full automation package..."
+              placeholder={t("messagePlaceholder")}
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -213,20 +215,19 @@ export function ContactForm() {
               {status === "submitting" ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending Message...
+                  {t("submittingBtn")}
                 </>
               ) : (
                 <>
                   <Send className="h-4 w-4" />
-                  Send Inquiry to Ceratics
+                  {t("submitBtn")}
                 </>
               )}
             </Button>
           </div>
 
           <p className="pt-1 text-center text-[11px] text-muted-foreground">
-            We respect your privacy. Zero spam, ever. Your information is only
-            used to respond to your inquiry.
+            {t("privacyNote")}
           </p>
         </form>
       )}
