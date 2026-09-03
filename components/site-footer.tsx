@@ -154,7 +154,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/#services"
+                  href="/services"
                   className="transition-colors hover:text-foreground"
                 >
                   Services
