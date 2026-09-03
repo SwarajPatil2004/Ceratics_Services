@@ -113,7 +113,7 @@ const config: Config = {
         "gradient-ceratics-soft":
           "linear-gradient(135deg, rgba(7, 191, 193, 0.1) 0%, rgba(63, 203, 166, 0.08) 50%, rgba(156, 220, 108, 0.1) 100%)",
         "gradient-radial-glow":
-          "radial-gradient(ellipse at top, rgba(7, 191, 193, 0.15) 0%, rgba(156, 220, 108, 0.05) 50%, transparent 75%)",
+          "radial-gradient(ellipse at top, rgba(7, 191, 193, 0.35) 0%, rgba(63, 203, 166, 0.22) 40%, rgba(156, 220, 108, 0.12) 65%, transparent 80%)",
       },
       borderRadius: {
         sm: "0.375rem",

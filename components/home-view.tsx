@@ -287,7 +287,7 @@ export function HomeView() {
           {painPoints.map((item, idx) => (
             <Card
               key={idx}
-              className="relative overflow-hidden border-border/80 bg-card p-6 transition-all duration-200 hover:border-brand-teal-500/40 hover:shadow-md sm:p-8"
+              className="relative overflow-hidden border-border/80 bg-card/85 p-6 backdrop-blur-sm transition-all duration-200 hover:border-brand-teal-500/40 hover:shadow-md sm:p-8"
             >
               <div className="space-y-6">
                 {/* The Pain */}
@@ -348,7 +348,7 @@ export function HomeView() {
             return (
               <Card
                 key={idx}
-                className="group relative flex flex-col justify-between overflow-hidden border-border/80 bg-card p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-teal-500/50 hover:shadow-md"
+                className="group relative flex flex-col justify-between overflow-hidden border-border/80 bg-card/85 p-6 backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-teal-500/50 hover:shadow-md"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

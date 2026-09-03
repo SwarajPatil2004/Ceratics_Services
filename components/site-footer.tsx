@@ -259,15 +259,24 @@ export function SiteFooter() {
         <div className="mt-12 flex flex-col items-center justify-between border-t border-border/80 pt-8 text-xs text-muted-foreground sm:flex-row">
           <p>{t("copyright", { year: currentYear })}</p>
           <div className="mt-4 flex gap-6 sm:mt-0">
-            <span className="cursor-pointer transition-colors hover:text-foreground">
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-foreground"
+            >
               {t("privacy")}
-            </span>
-            <span className="cursor-pointer transition-colors hover:text-foreground">
+            </Link>
+            <Link
+              href="/terms"
+              className="transition-colors hover:text-foreground"
+            >
               {t("terms")}
-            </span>
-            <span className="cursor-pointer transition-colors hover:text-foreground">
+            </Link>
+            <Link
+              href="/about"
+              className="transition-colors hover:text-foreground"
+            >
               {t("security")}
-            </span>
+            </Link>
           </div>
         </div>
       </div>

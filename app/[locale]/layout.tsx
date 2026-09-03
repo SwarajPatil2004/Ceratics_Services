@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { AmbientBackground } from "@/components/ambient-background";
 import "@/app/globals.css";
 
 const sans = Inter({
@@ -125,10 +126,13 @@ export default async function LocaleLayout({
           <NextIntlClientProvider messages={messages}>
             <JsonLd />
             <GoogleAnalytics />
-            <div className="relative flex min-h-screen flex-col bg-background text-foreground">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
+            <div className="relative min-h-screen bg-background text-foreground">
+              <AmbientBackground />
+              <div className="relative z-10 flex min-h-screen flex-col">
+                <SiteHeader />
+                <main className="flex-1">{children}</main>
+                <SiteFooter />
+              </div>
             </div>
             <Analytics />
           </NextIntlClientProvider>

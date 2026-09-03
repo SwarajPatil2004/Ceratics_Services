@@ -24,6 +24,7 @@ interface BookingModalProps {
 export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const t = useTranslations("BookingModal");
   const [submitted, setSubmitted] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [formData, setFormData] = React.useState({
     name: "",
     businessName: "",
@@ -40,6 +41,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     } else {
       document.body.style.overflow = "";
       setSubmitted(false);
+      setIsSubmitting(false);
     }
     return () => {
       document.body.style.overflow = "";
@@ -57,12 +59,32 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     trackEvent("booking_form_submitted", {
       primary_goal: formData.primaryGoal,
     });
-    setSubmitted(true);
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          businessName: formData.businessName,
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          message: `[Strategy Call Request via Booking Modal]\nPrimary Priority: ${formData.primaryGoal}\nRequested Date: Earliest available slot`,
+        }),
+      });
+    } catch (err) {
+      console.error("[Booking Submission Error]", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -252,11 +274,21 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   type="submit"
                   variant="gradient"
                   size="lg"
+                  disabled={isSubmitting}
                   className="w-full gap-2 py-5 font-semibold shadow-md"
                 >
-                  <Calendar className="h-4 w-4" />
-                  {t("confirmBtn")}
-                  <ArrowRight className="h-4 w-4" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950 border-t-transparent" />
+                      <span>Sending Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Calendar className="h-4 w-4" />
+                      {t("confirmBtn")}
+                      <ArrowRight className="h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </div>
 
