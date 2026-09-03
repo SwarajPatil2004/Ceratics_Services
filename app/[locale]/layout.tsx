@@ -8,6 +8,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import "@/app/globals.css";
 
 const sans = Inter({
@@ -122,11 +124,13 @@ export default async function LocaleLayout({
         >
           <NextIntlClientProvider messages={messages}>
             <JsonLd />
+            <GoogleAnalytics />
             <div className="relative flex min-h-screen flex-col bg-background text-foreground">
               <SiteHeader />
               <main className="flex-1">{children}</main>
               <SiteFooter />
             </div>
+            <Analytics />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

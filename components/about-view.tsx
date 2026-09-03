@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { BookingModal } from "@/components/booking-modal";
+import { trackBookCallClick } from "@/lib/analytics";
 
 export function AboutView() {
   const [bookingOpen, setBookingOpen] = React.useState(false);
@@ -143,7 +144,10 @@ export function AboutView() {
               variant="gradient"
               size="lg"
               className="gap-2 px-8 py-6 text-base font-semibold shadow-md"
-              onClick={() => setBookingOpen(true)}
+              onClick={() => {
+                trackBookCallClick("about_hero", "Book a 15-Minute Intro Call");
+                setBookingOpen(true);
+              }}
             >
               <PhoneCall className="h-4 w-4" />
               Book a 15-Minute Intro Call
@@ -438,7 +442,13 @@ export function AboutView() {
                 variant="gradient"
                 size="lg"
                 className="w-full gap-2 px-9 py-6 text-base font-semibold shadow-md hover:shadow-lg sm:w-auto"
-                onClick={() => setBookingOpen(true)}
+                onClick={() => {
+                  trackBookCallClick(
+                    "about_final_cta",
+                    "Book a 15-Minute Discovery Call"
+                  );
+                  setBookingOpen(true);
+                }}
               >
                 <PhoneCall className="h-4 w-4" />
                 Book a 15-Minute Discovery Call

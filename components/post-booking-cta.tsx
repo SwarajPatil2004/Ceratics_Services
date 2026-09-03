@@ -5,6 +5,7 @@ import { PhoneCall, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookingModal } from "@/components/booking-modal";
+import { trackBookCallClick } from "@/lib/analytics";
 
 export function PostBookingCTA() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -34,7 +35,13 @@ export function PostBookingCTA() {
               variant="gradient"
               size="lg"
               className="w-full gap-2 px-8 py-6 text-base font-semibold shadow-md sm:w-auto"
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                trackBookCallClick(
+                  "blog_post_footer",
+                  "Book a Free Strategy Call"
+                );
+                setIsOpen(true);
+              }}
             >
               <PhoneCall className="h-4 w-4" />
               Book a Free Strategy Call

@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
+import { trackEvent } from "@/lib/analytics";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -58,6 +59,9 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackEvent("booking_form_submitted", {
+      primary_goal: formData.primaryGoal,
+    });
     setSubmitted(true);
   };
 

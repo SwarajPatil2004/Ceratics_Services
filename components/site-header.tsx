@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslations } from "next-intl";
+import { trackBookCallClick } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -132,6 +133,7 @@ export function SiteHeader() {
             size="sm"
             className="gap-2 font-semibold shadow-sm hover:shadow-md"
             onClick={() => {
+              trackBookCallClick("header_nav", "Book a Call");
               const contactEl = document.getElementById("contact");
               if (contactEl) {
                 contactEl.scrollIntoView({ behavior: "smooth" });
@@ -242,6 +244,7 @@ export function SiteHeader() {
                 variant="gradient"
                 className="w-full gap-2 py-5 font-semibold shadow-md"
                 onClick={() => {
+                  trackBookCallClick("mobile_drawer", "Book a Call");
                   setMobileMenuOpen(false);
                   const contactEl = document.getElementById("contact");
                   if (contactEl) {

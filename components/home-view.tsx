@@ -34,6 +34,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { BookingModal } from "@/components/booking-modal";
+import { trackBookCallClick } from "@/lib/analytics";
 
 export function HomeView() {
   const [bookingOpen, setBookingOpen] = React.useState(false);
@@ -223,7 +224,10 @@ export function HomeView() {
               variant="gradient"
               size="lg"
               className="w-full gap-2 px-8 py-6 text-base font-semibold shadow-md hover:shadow-lg sm:w-auto"
-              onClick={() => setBookingOpen(true)}
+              onClick={() => {
+                trackBookCallClick("home_hero", "Book a Free Strategy Call");
+                setBookingOpen(true);
+              }}
             >
               <PhoneCall className="h-4 w-4" />
               Book a Free Strategy Call
@@ -367,7 +371,10 @@ export function HomeView() {
 
                 <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-6">
                   <button
-                    onClick={() => setBookingOpen(true)}
+                    onClick={() => {
+                      trackBookCallClick("home_services_card", service.title);
+                      setBookingOpen(true);
+                    }}
                     className="inline-flex items-center gap-1 text-xs font-semibold text-brand-teal-600 transition-colors hover:text-brand-teal-700 dark:text-brand-teal-400 dark:hover:text-brand-teal-300"
                   >
                     Learn more & deploy <ArrowRight className="h-3 w-3" />
@@ -397,7 +404,13 @@ export function HomeView() {
                 variant="gradient"
                 size="sm"
                 className="w-full font-semibold shadow-sm"
-                onClick={() => setBookingOpen(true)}
+                onClick={() => {
+                  trackBookCallClick(
+                    "home_custom_bundle",
+                    "Discuss Your Package"
+                  );
+                  setBookingOpen(true);
+                }}
               >
                 Discuss Your Package
               </Button>
@@ -523,7 +536,13 @@ export function HomeView() {
                 variant="gradient"
                 size="lg"
                 className="w-full gap-2 px-9 py-6 text-base font-semibold shadow-md hover:shadow-lg sm:w-auto"
-                onClick={() => setBookingOpen(true)}
+                onClick={() => {
+                  trackBookCallClick(
+                    "home_final_cta",
+                    "Book Your 15-Minute Discovery Call"
+                  );
+                  setBookingOpen(true);
+                }}
               >
                 <PhoneCall className="h-4 w-4" />
                 Book Your 15-Minute Discovery Call

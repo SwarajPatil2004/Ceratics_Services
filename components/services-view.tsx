@@ -28,6 +28,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { BookingModal } from "@/components/booking-modal";
+import { trackBookCallClick } from "@/lib/analytics";
 
 export function ServicesView() {
   const [bookingOpen, setBookingOpen] = React.useState(false);
@@ -395,7 +396,13 @@ export function ServicesView() {
               variant="gradient"
               size="lg"
               className="gap-2 px-8 py-6 text-base font-semibold shadow-md"
-              onClick={() => setBookingOpen(true)}
+              onClick={() => {
+                trackBookCallClick(
+                  "services_hero",
+                  "Book a 15-Minute Services Call"
+                );
+                setBookingOpen(true);
+              }}
             >
               <PhoneCall className="h-4 w-4" />
               Book a 15-Minute Services Call
@@ -535,7 +542,13 @@ export function ServicesView() {
                     <Button
                       variant="gradient"
                       className="gap-2 font-semibold shadow-sm"
-                      onClick={() => setBookingOpen(true)}
+                      onClick={() => {
+                        trackBookCallClick(
+                          "service_card_inquire",
+                          service.name
+                        );
+                        setBookingOpen(true);
+                      }}
                     >
                       <PhoneCall className="h-4 w-4" />
                       Inquire About This Service
@@ -637,7 +650,13 @@ export function ServicesView() {
               <Button
                 variant="gradient"
                 className="w-full font-semibold shadow-sm"
-                onClick={() => setBookingOpen(true)}
+                onClick={() => {
+                  trackBookCallClick(
+                    "services_custom_build",
+                    "Discuss Custom Build"
+                  );
+                  setBookingOpen(true);
+                }}
               >
                 Discuss Custom Build
               </Button>
@@ -672,7 +691,13 @@ export function ServicesView() {
                 variant="gradient"
                 size="lg"
                 className="w-full gap-2 px-9 py-6 text-base font-semibold shadow-md hover:shadow-lg sm:w-auto"
-                onClick={() => setBookingOpen(true)}
+                onClick={() => {
+                  trackBookCallClick(
+                    "services_final_cta",
+                    "Book Your 15-Minute Discovery Call"
+                  );
+                  setBookingOpen(true);
+                }}
               >
                 <PhoneCall className="h-4 w-4" />
                 Book Your 15-Minute Discovery Call
