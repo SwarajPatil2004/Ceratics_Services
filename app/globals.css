@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode: Soft off-white backgrounds, near-black text */
+    --background: 140 14% 98.4%;
+    --foreground: 160 21% 7.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 21% 7.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 21% 7.1%;
+
+    /* Primary: Deep Teal for accessible contrast on light backgrounds */
+    --primary: 175 84% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 14% 95%;
+    --secondary-foreground: 160 21% 7.1%;
+
+    --muted: 150 14% 95%;
+    --muted-foreground: 156 8% 35%;
+
+    --accent: 84 81% 89%;
+    --accent-foreground: 87 81% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 11% 90%;
+    --input: 150 11% 90%;
+    --ring: 181 93% 39%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode: Deep charcoal/near-black backgrounds, off-white text */
+    --background: 160 20% 3.9%;
+    --foreground: 150 14% 95.7%;
+
+    --card: 160 16% 7%;
+    --card-foreground: 150 14% 95.7%;
+
+    --popover: 160 16% 7%;
+    --popover-foreground: 150 14% 95.7%;
+
+    /* Primary: Glowing Teal on deep charcoal */
+    --primary: 181 93% 39%;
+    --primary-foreground: 160 20% 3.9%;
+
+    --secondary: 156 18% 11%;
+    --secondary-foreground: 150 14% 95.7%;
+
+    --muted: 156 18% 11%;
+    --muted-foreground: 156 8% 61%;
+
+    --accent: 153 17% 14%;
+    --accent-foreground: 94 62% 65%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 153 17% 14%;
+    --input: 153 17% 14%;
+    --ring: 168 76% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Ceratics signature gradient utilities */
+  .bg-gradient-ceratics {
+    background: linear-gradient(135deg, #07bfc1 0%, #3fcba6 50%, #9cdc6c 100%);
+  }
+
+  .text-gradient-ceratics {
+    background: linear-gradient(135deg, #07bfc1 0%, #3fcba6 50%, #9cdc6c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glow-ceratics {
+    box-shadow:
+      0 0 25px -5px rgba(7, 191, 193, 0.25),
+      0 0 15px -5px rgba(156, 220, 108, 0.2);
+  }
+
+  .border-gradient-ceratics {
+    border-image: linear-gradient(135deg, #07bfc1 0%, #3fcba6 50%, #9cdc6c 100%)
+      1;
+  }
+}
